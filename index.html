@@ -9,42 +9,35 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="slider-container">
-        	<div>
-
-        		<div class="mySlides fade">
-        		    <img  src='img/pageOne.jpeg' alt="sally lightfoot crab"/>
-        		</div>
-              
-        		<div class="mySlides fade">
-        		    <img  src='img/pageTwo.jpeg' alt="fighting nazca boobies"/>
-        		</div>
-              
-        		<div class="mySlides fade">
-                    <img  src='img/pageThree.jpeg' alt="otovalo waterfall"/>
-                </div>
-                
-                <div class="mySlides fade">
-                    <img  src='img/PageFour.jpeg' alt="pelican"/>
-                </div>
-                        
-        		<div class="mySlides fade">
-                	<img  src='img/pageFive.jpeg' alt="pelican"/>
-        		</div>
-                  
-            </div>
+        <div class="galleryContainer">
+            <div class="slideshow-container">
             
-    		<a class="prev" onclick='plusSlides(-1)'>&#10094;</a>
-        	<a class="next" onclick='plusSlides(1)'>&#10095;</a>
-        </div>
+                <div class="mySlides">
+                    <img src="img/pageOne.jpeg">
+                </div>
+            
+                <div class="mySlides">
+                    <img src="img/pageTwo.jpeg">
+                </div>
+            
+                <div class="mySlides">
+                    <img src="img/pageThree.jpeg">
+                </div>
+            
+                <div class="mySlides">
+                    <img src="img/pageFour.jpeg">
+                </div>
 
-        <div style='text-align: center;'>
-        	<span class="dot" onclick='currentSlide(1)'></span>
-        	<span class="dot" onclick='currentSlide(2)'></span>
-        	<span class="dot" onclick='currentSlide(3)'></span>
-        	<span class="dot" onclick='currentSlide(4)'></span>
-        	<span class="dot" onclick='currentSlide(5)'></span>
-        </div>	
+                <div class="mySlides">
+                    <img src="img/pageFive.jpeg">
+                </div>
+            
+                <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span>&#10094;</div>
+                <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span>&#10095;</div>
+                
+                <div id="dotsContainer"></div>
+            </div>
+        </div>
     </body>
     <script src="script.js"></script>
 </html>

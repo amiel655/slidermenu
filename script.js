@@ -1,54 +1,68 @@
-var index = 1;
-var timer;
 
-addEventListener("load",function() {
-    showSlides(index);
-    timer = setInterval(function(){plusSlides(1)}, 3000);
-});
+var slideIndex,slides,dots;
+function initGallery(){
+    slideIndex = 0;
+    slides=document.getElementsByClassName("mySlides");
+    slides[slideIndex].style.opacity=1;
 
-function plusSlides(n){
-  clearInterval(timer);
-  
-  if (n < 0){
-    showSlides(index -= 1);
-  } else {
-   showSlides(index += 1); 
-  }
-
-  if (n === -1){
-    timer = setInterval(function(){plusSlides(n + 2)}, 3000);
-  } else {
-    timer = setInterval(function(){plusSlides(n + 1)}, 3000);
-  }
+    dots=[];
+    var dotsContainer=document.getElementById("dotsContainer"),i;
+    for (i = 0; i < slides.length; i++) {
+        var dot=document.createElement("span");
+        dot.classList.add("dots");
+        dotsContainer.append(dot);
+        dot.setAttribute("onclick","moveSlide("+i+")");
+        dots.push(dot);
+    }
+    dots[slideIndex].classList.add("active");
 }
-
-function currentSlide(n){
-  clearInterval(timer);
-  timer = setInterval(function(){plusSlides(n + 1)}, 3000);
-  showSlides(index = n);
+initGallery();
+function plusSlides(n) {
+    moveSlide(slideIndex+n);
 }
-
-function showSlides(n){
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var bullets = document.getElementsByClassName("dot");
-
-  if (n > slides.length) {
-      index = 1
+function moveSlide(n){
+    var i;
+    var current,next;
+    var moveSlideAnimClass={
+          forCurrent:"",
+          forNext:""
+    };
+    if(n>slideIndex) {
+        if(n >= slides.length){n=0;}
+        moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
+        moveSlideAnimClass.forNext="moveLeftNextSlide";
+    }else if(n<slideIndex){
+        if(n<0){n=slides.length-1;}
+        moveSlideAnimClass.forCurrent="moveRightCurrentSlide";
+        moveSlideAnimClass.forNext="moveRightPrevSlide";
     }
 
-  if (n < 1) {
-      index = slides.length
+    if(n!=slideIndex){
+        next = slides[n];
+        current=slides[slideIndex];
+        for (i = 0; i < slides.length; i++) {
+            slides[i].className = "mySlides";
+            slides[i].style.opacity=0;
+            dots[i].classList.remove("active");
+        }
+        current.classList.add(moveSlideAnimClass.forCurrent);
+        next.classList.add(moveSlideAnimClass.forNext);
+        dots[n].classList.add("active");
+        slideIndex=n;
     }
-
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
+}
+var timer=null;
+function setTimer(){
+    timer=setInterval(function () {
+        plusSlides(1) ;
+    },3000);
+}
+setTimer();
+function interval() {
+    if(timer==null){
+        setTimer();
+    }else{
+        clearInterval(timer);
+        timer=null;
     }
-
-  for (i = 0; i < bullets.length; i++) {
-      bullets[i].className = bullets[i].className.replace(" active", "");
-    }
-
-  slides[index-1].style.display = "block";
-  bullets[index-1].className += " active";
 }

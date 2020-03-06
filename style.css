@@ -1,53 +1,109 @@
-.slider-container {
-    max-width: 1010px;
-    position: relative;
-    margin: auto
-}
-
-img{
-    width: 1000px;
+.galleryContainer{
+    width: 100%;
     height: 500px;
+    max-width: 1000px;
+    margin: auto;
+    border:5px solid black;
 }
-
-.mySlides {
-    display: none;
-    height: 500px;
-    border: solid 5px black;
+.slideshow-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     position: relative;
 }
-
-.prev, .next {
-    cursor: pointer;
+.galleryContainer .slideshow-container .mySlides{
+    width: 100%;
+    height: 100%;
     position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -20px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
+    opacity: 0;
+}
+.galleryContainer .slideshow-container .mySlides img{
+    width: 100%;
+    height: 100%;
 }
 
-.next {
+
+.galleryContainer .slideshow-container .leftArrow,.galleryContainer .slideshow-container .rightArrow{
+    width: 50px;
+    position: absolute;
+    left: 15px;
+    z-index: 1;
+    height: 72px;
+    top: 215px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+.galleryContainer .slideshow-container .rightArrow{
+    left: auto;
     right: 0;
 }
 
-.prev {
-    left: 0;
+.galleryContainer .slideshow-container #dotsContainer{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-top: 20px;
+    position: absolute;
+    bottom: 0px;
+    left: -20px;
 }
-
-.dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    position: relative;
+.galleryContainer .slideshow-container #dotsContainer .dots{
     display: inline-block;
-    bottom: 90px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 7px;
+    background-color: #bbb;
+    cursor: pointer;
 }
 
-.active, .dot:hover {
-    background-color: #333
+.galleryContainer .slideshow-container #dotsContainer .dots:hover,.galleryContainer .slideshow-container #dotsContainer .dots.active{
+    background-color: #717171;;
 }
+
+
+.galleryContainer .moveLeftCurrentSlide{
+    animation-name: moveLeftCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+
+}
+.galleryContainer .moveLeftNextSlide{
+    animation-name: moveLeftNext;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveLeftCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: -100%;opacity: 1;}
+}
+@keyframes moveLeftNext {
+    from {margin-left: 100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+
+
+.galleryContainer .moveRightCurrentSlide{
+    animation-name: moveRightCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+.galleryContainer .moveRightPrevSlide{
+    animation-name: moveRightPrev;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveRightCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: 100%;opacity: 1;}
+}
+@keyframes moveRightPrev {
+    from {margin-left: -100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+
