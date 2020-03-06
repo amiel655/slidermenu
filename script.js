@@ -18,9 +18,19 @@ function initGallery(){
 }
 initGallery();
 function plusSlides(n) {
+    clearInterval(timer);
+    timer = setInterval(function(){moveSlide(slideIndex+1)}, 3000);
     moveSlide(slideIndex+n);
+    
 }
+
+document.getElementById('dotsContainer').onclick = function(){
+    clearInterval(timer);
+    timer = setInterval(function(){moveSlide(slideIndex+1)}, 3000);
+}
+
 function moveSlide(n){
+
     var i;
     var current,next;
     var moveSlideAnimClass={
@@ -58,6 +68,8 @@ function setTimer(){
     },3000);
 }
 setTimer();
+slideshowContainer.addEventListener('click', currentSlide);
+
 function interval() {
     if(timer==null){
         setTimer();
