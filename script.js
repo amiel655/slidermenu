@@ -68,7 +68,6 @@ function setTimer(){
     },3000);
 }
 setTimer();
-slideshowContainer.addEventListener('click', currentSlide);
 
 function interval() {
     if(timer==null){
