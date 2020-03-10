@@ -21,7 +21,6 @@ function plusSlides(n) {
     clearInterval(timer);
     timer = setInterval(function(){moveSlide(slideIndex+1)}, 3000);
     moveSlide(slideIndex+n);
-    
 }
 
 document.getElementById('dotsContainer').onclick = function(){
@@ -29,14 +28,15 @@ document.getElementById('dotsContainer').onclick = function(){
     timer = setInterval(function(){moveSlide(slideIndex+1)}, 3000);
 }
 
+
 function moveSlide(n){
 
-    var i;
     var current,next;
     var moveSlideAnimClass={
           forCurrent:"",
           forNext:""
     };
+    
     if(n>slideIndex) {
         if(n >= slides.length){n=0;}
         moveSlideAnimClass.forCurrent="moveLeftCurrentSlide";
@@ -69,11 +69,3 @@ function setTimer(){
 }
 setTimer();
 
-function interval() {
-    if(timer==null){
-        setTimer();
-    }else{
-        clearInterval(timer);
-        timer=null;
-    }
-}
